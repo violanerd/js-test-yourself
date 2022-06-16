@@ -27,13 +27,13 @@ Correct answers {1: e; 2: b; 3: d; 4: e; 5: c}
     var cheese =["cheddar", "gouda", "parmesan", "feta"]
     
     What statement will return "cheddar"?
-    a. console.log("cheese");
+    a. console.log('cheese');
     b. console.log(cheese[3]);
     c. console.log(cheese[0]);
-    d. console.log("cheddar")
+    d. console.log('cheddar')
     e. c and d
 
-5. What does window.confirm("Are you sure?") return?
+5. What does window.confirm('Are you sure?') return?
     a. yes or no
     b. ok or cancel
     c. true or false

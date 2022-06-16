@@ -1,0 +1,6 @@
+*, *:before, *:after {
+    box-sizing: border-box;
+  }
+  /* Universal Box Sizing: https://css-tricks.com/box-sizing/#:~:text=With%20box%2Dsizing%3A%20border%2D,its%20way%20into%20reset%20styles. */
+
+  
