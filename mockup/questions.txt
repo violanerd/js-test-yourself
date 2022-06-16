@@ -1,0 +1,41 @@
+Correct answers {1: e; 2: b; 3: d; 4: e; 5: c}
+
+
+
+1. Which one is a primitive value of Javascript? 
+    a. Boolean
+    b. string
+    c. number
+    d. null
+    e. all of the above
+
+2. Which for loop has the correct syntax?
+    a. for (i = 0; i < n; i++)
+    b. for (var i = 0; i < n; i++)
+    c. for var i = 0, i < n, i++
+    d. for (var i = 0, i < n, i++)
+    e. none of the above
+
+3. Choose the comparison operator that means strict equality:
+    a. >=
+    b. ==
+    c. =
+    d. ===
+    e. none of the above
+
+4. Given this array -
+    var cheese =["cheddar", "gouda", "parmesan", "feta"]
+    
+    What statement will return "cheddar"?
+    a. console.log("cheese");
+    b. console.log(cheese[3]);
+    c. console.log(cheese[0]);
+    d. console.log("cheddar")
+    e. c and d
+
+5. What does window.confirm("Are you sure?") return?
+    a. yes or no
+    b. ok or cancel
+    c. true or false
+    d. all of the above
+    e. none of the above
