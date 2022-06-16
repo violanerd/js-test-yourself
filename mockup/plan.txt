@@ -1,19 +1,22 @@
+* to continue/ to do
+
 1. Write questions
-2. What should come first?
-    -css?
-    -Javascript? <-- this comes first
-    -the timer in Javascript?
+2. What should come first? HTML, then javascript for proof of concept
+    
 3. Parts of the website:
     a. questions, that are dynamically loaded depending on:
-        - click event..
-    b. css that styles the questions
-    c. local storage holding the high score
-    d. timer that counts down
+        - click event.. <-- this is working now *flesh out this logic
+    b. * css that styles the questions
+    c. * local storage holding the high score
+    d. * timer that counts down
         - subtract if incorrect
-    e. logic that checks if the answer is correct
+    e. * logic that checks if the answer is correct
         - triggers the timer to subtract if incorrect
         - triggers a correct or incorrect button at the bottom that displays for a short amount of time
         - triggers the next question after a set amount of time
+    * f. start screen <-- this is where I am working now
+    g. * end screen
+
 PLAN
 
 1. Create Variables to store the questions. 
@@ -30,5 +33,11 @@ PLAN
     display the questions
     iterate through
 
-    going to have to use an ul - so I can get Li items from the questions
-    OR buttons
+3. Start screen work
+    - css develop
+    - text
+4. Questions page
+
+5. End screen with local storage
+
+6. Timer
