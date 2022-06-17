@@ -26,27 +26,44 @@ var question5 = {
     answers: ["a. yes or no", "b. ok or cancel", "c. true or false", "d. all of the above", "e. none of the above"],
     correct: "c. true or false"
 };
+var questionArray =[question1, question2, question3, question4, question5];
 
+var startQuizBtn = document.querySelector("#startQuiz");
+var containerEl = document.querySelector(".content-wrapper");
+var announcement = document.querySelector("#announcer");
+var question = document.querySelector("#question");
+var answerContainerEl = document.querySelector("#answer-wrapper");
 
-var startQuiz = document.querySelector("#startQuiz");
-startQuiz.addEventListener("click", function() {
-    // write a for loop to see if I can display the questions to the page
-    // grab the display locations
-    announcement = document.querySelector("#announcer");
-    announcement.textContent=("Question 1");
-    var question = document.querySelector("#question");
-    question.textContent=(question1.question);
-    startQuiz.setAttribute("style", "display: none"); 
-    answerContainerEl = document.querySelector("#answer-wrapper");
-    // how to do the answers?
-    
-    ansArray = question1.answers
-    for (var i = 0; i < ansArray.length; i++){
-        var ansButtonEl = document.createElement("button");
-        ansButtonEl.textContent = ansArray[i];
-        answerContainerEl.appendChild(ansButtonEl);
+var startQuiz = function () {
+    startQuizBtn.setAttribute("style", "display: none"); 
+    for (var i = 0; i < questionArray.length; i++){
+        announcement.textContent=("Question " + (i + 1));
+        question.textContent=(questionArray[i].question);
+            // display answers
+        var ansArray = questionArray[i].answers
+        for (var i = 0; i < ansArray.length; i++){
+            var ansButtonEl = document.createElement("button");
+            ansButtonEl.textContent = ansArray[i];
+            answerContainerEl.appendChild(ansButtonEl);
+        }
     }
+};
 
-
-
-})
+// for (var i = 0; i < questionArray.length; i++){
+//     announcement.textContent=("Question " + (i + 1));
+//     question.textContent=(questionArray[i].question);
+//         // display answers
+//     var ansArray = questionArray[i].answers
+//     for (var i = 0; i < ansArray.length; i++){
+//         var ansButtonEl = document.createElement("button");
+//         ansButtonEl.textContent = ansArray[i];
+//         answerContainerEl.appendChild(ansButtonEl);
+//     }
+// }
+   
+startQuizBtn.addEventListener("click", startQuiz);
+// containerEl.addEventListener - make this one handle question answers
+    
+    
+    
+    

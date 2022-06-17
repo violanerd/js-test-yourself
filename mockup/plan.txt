@@ -25,7 +25,6 @@ PLAN
         --> put an array into the object
     - store the objects in an array
     -check that I can see them in the console
-    * continue here
 2. mock up html/css to see if I can 
     screen shot to get wireframe
     draw it out
