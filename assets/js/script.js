@@ -22,7 +22,7 @@ var question4 = {
     correct: "e. c and d"
 };
 var question5 = {
-    question: "What does window.confirm('Are you sure?') return?",
+    question: "What value does window.confirm() return?",
     answers: ["a. yes or no", "b. ok or cancel", "c. true or false", "d. all of the above", "e. none of the above"],
     correct: "c. true or false"
 };
@@ -34,9 +34,6 @@ var startQuizEl = document.querySelector("#start-wrapper");
 
 // start screen content to erase it
 var welcomePEl = document.querySelector("#start-screen-content");
-
-// ?
-var answerEl = document.querySelector("#answer");
 
 // selects where to listen for answer choice click
 var questionEl = document.querySelector("#question-content");
@@ -53,6 +50,9 @@ var answerContainerEl = document.querySelector("#answer-wrapper");
 // validation
 var correctEl = document.querySelector("#correct");
 var incorrectEl = document.querySelector("#incorrect");
+
+// end screen
+var endEl = document.querySelector("#endscreen");
 
 // variable to use for iterating through questions
 var questionNum = 0;
@@ -82,13 +82,14 @@ function generateQuestions () {
 var validate = function(event) {     
     // when clicked, move on to the next question
     var element = event.target
-    if (element.textContent===question1.correct){
+    if (element.textContent===questionArray[questionNum].correct){
         correctEl.textContent = "Correct!";
         correctEl.setAttribute("style", "border-top: 2px dotted black");
         setTimeout(function(){
             correctEl.textContent="",
             correctEl.removeAttribute("style", "border-top: 2px dotted black")}, 2000);
-    } else if (element.textContent!=question1.correct) {
+    } 
+    if (element.textContent!=questionArray[questionNum].correct) {
         incorrectEl.textContent = "Incorrect!";
         incorrectEl.setAttribute("style", "border-top: 2px dotted black");
         setTimeout(function(){
@@ -98,6 +99,7 @@ var validate = function(event) {
     answerContainerEl.textContent="";
     
     if (questionNum===4){
+        questionEl.removeEventListener("click", validate);
         endGame();
     } else {
         questionNum++;
@@ -105,14 +107,31 @@ var validate = function(event) {
     }
 };
 
-function resetValidate () {
-
-}
-
 function endGame(){
-    console.log("this is the end");
-}
+    
+    // set the heading
+    announcement.textContent="All Done!";
+    // set the content text
+    question.textContent="Your final score is <enter timer number here>";
+    // dynamically generate an input form for initials
+    var highScoreInput = document.createElement("input"); 
+    highScoreInput.setAttribute("type", 'text');
+    highScoreInput.setAttribute("id", "initials");
+    var label = document.createElement("label");
+    label.setAttribute("for", "initials");
+    label.textContent = "Enter Initials: ";
+    var submitHighScoresBtn = document.createElement("button");
+    submitHighScoresBtn.textContent = "submit";
+    endEl.append(label, highScoreInput, submitHighScoresBtn);
+    submitHighScoresBtn.addEventListener("click", storeHighScore);
+    
+    
+};
 
+function storeHighScore (){
+    var initials = document.getElementById("initials").value;
+    localStorage.setItem(initials, "to-do-json-stringify-timer");
+}
 
 // function to end the game when the timer hits zero **  OR all questions are answered 
 // this will be a conditional OR 
@@ -121,22 +140,11 @@ function endGame(){
 // high sore function
     // adds name to highscore with input and localstorage
     // asks to play again
-// for (var i = 0; i < questionArray.length; i++){
-//     announcement.textContent=("Question " + (i + 1));
-//     question.textContent=(questionArray[i].question);
-//         // display answers
-//     var ansArray = questionArray[i].answers
-//     for (var i = 0; i < ansArray.length; i++){
-//         var ansButtonEl = document.createElement("button");
-//         ansButtonEl.textContent = ansArray[i];
-//         answerContainerEl.appendChild(ansButtonEl);
-//     }
-// }
-   
+
 startQuizEl.addEventListener("click", startQuiz);
 
 questionEl.addEventListener("click", validate);
     
-    
+ 
     
     
