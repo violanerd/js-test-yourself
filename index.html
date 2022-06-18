@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Javascript Quiz</title>
-    <link rel="stylesheet" href="./assets/css/style.css">
+    <link rel="stylesheet" href="./assets/css/styles.css">
 </head>
 <body>
     <main>
@@ -17,19 +17,23 @@
                 <div class="timer" id="timer"></div>
             </div>   
             <div class="announcer-wrapper" id="announcer-wrapper">
-                <h2 class="announcer" id="announcer">Announcement!</h2>
+                <h2 class="announcer" id="announcer">Welcome to Test Yourself!</h2>
+                <p id="start-screen-content">Try to answer the questions correctly before time runs out!</p>
             </div>
             <div class="question-content" id="question-content">
                 <div class="question-wrapper" id="question-wrapper">
-                    <h3 class="question" id="question">Question</h3>
+                    <h3 class="question" id="question"></h3>
                 </div>
                 <div class="answer-wrapper" id="answer-wrapper">
-                    <button class="startQuiz" id="startQuiz">Start Quiz!</button>
+                    <div class="answer" id="answer"></div>
                 </div>
             </div>
+            <div class="start-wrapper" id="start-wrapper">
+                <div class="startQuiz" id="startQuiz">Start Quiz!</div>
+            </div>
             <div class="validation" id="validation">
-                <h4 class="validate" data-state="correct"></h4>
-                <h4 class="validate" data-state="incorrect"></h4>
+                <h4 class="validate" data-state="correct" id="correct"></h4>
+                <h4 class="validate" data-state="incorrect" id="incorrect"></h4>
             </div>
         </div>
     </main>

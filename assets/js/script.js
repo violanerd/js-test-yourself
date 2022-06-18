@@ -28,27 +28,52 @@ var question5 = {
 };
 var questionArray =[question1, question2, question3, question4, question5];
 
-var startQuizBtn = document.querySelector("#startQuiz");
-var containerEl = document.querySelector(".content-wrapper");
+var startQuizEl = document.querySelector("#start-wrapper");
+var welcomePEl = document.querySelector("#start-screen-content");
+var answerEl = document.querySelector("#answer");
+var questionEl = document.querySelector("#question-content");
 var announcement = document.querySelector("#announcer");
 var question = document.querySelector("#question");
 var answerContainerEl = document.querySelector("#answer-wrapper");
+var correctEl = document.querySelector("#correct");
+var incorrectEl = document.querySelector("#incorrect");
+
 
 var startQuiz = function () {
-    startQuizBtn.setAttribute("style", "display: none"); 
-    for (var i = 0; i < questionArray.length; i++){
-        announcement.textContent=("Question " + (i + 1));
-        question.textContent=(questionArray[i].question);
-            // display answers
-        var ansArray = questionArray[i].answers
-        for (var i = 0; i < ansArray.length; i++){
-            var ansButtonEl = document.createElement("button");
-            ansButtonEl.textContent = ansArray[i];
-            answerContainerEl.appendChild(ansButtonEl);
-        }
+    startQuizEl.textContent=("");
+    welcomePEl.textContent=(""); 
+    announcement.textContent=("Question 1");
+    question.textContent=questionArray[0].question;
+    // display answers
+    var ansArray = questionArray[0].answers
+    for (var i = 0; i < ansArray.length; i++){
+        var ansButtonEl = document.createElement("button");
+        ansButtonEl.textContent = ansArray[i];
+        answerContainerEl.appendChild(ansButtonEl);
+    }
+    //add code to display a timer
+};
+
+var validate = function(event) {     
+    // when clicked, move on to the next question
+    var element = event.target
+    if (element.textContent===question1.correct){
+        correctEl.textContent = "Correct!";
+    } else if (element.textContent!=question1.correct) {
+        incorrectEl.textContent = "Nope!";
     }
 };
 
+// display correct
+// display incorrect
+
+// function to end the game when the timer hits zero **  OR all questions are answered 
+// this will be a conditional OR 
+// need to understand how the timeout function works 
+
+// high sore function
+    // adds name to highscore with input and localstorage
+    // asks to play again
 // for (var i = 0; i < questionArray.length; i++){
 //     announcement.textContent=("Question " + (i + 1));
 //     question.textContent=(questionArray[i].question);
@@ -61,8 +86,9 @@ var startQuiz = function () {
 //     }
 // }
    
-startQuizBtn.addEventListener("click", startQuiz);
-// containerEl.addEventListener - make this one handle question answers
+startQuizEl.addEventListener("click", startQuiz);
+
+questionEl.addEventListener("click", validate);
     
     
     

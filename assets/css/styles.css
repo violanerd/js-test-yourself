@@ -2,5 +2,30 @@
     box-sizing: border-box;
   }
   /* Universal Box Sizing: https://css-tricks.com/box-sizing/#:~:text=With%20box%2Dsizing%3A%20border%2D,its%20way%20into%20reset%20styles. */
+#announcer-wrapper{
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+#announcer {
+  width: 100%;
+  text-align: center;
+}
 
-  
+#question-wrapper {
+  width: 100%;
+  text-align: center;
+}
+
+div #answer-wrapper{
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+}
+div #startQuiz {
+    border: 3px solid black;
+  }
+#startQuiz {
+    display: flex;
+    justify-content: center;
+  }
