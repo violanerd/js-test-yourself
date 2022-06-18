@@ -124,11 +124,15 @@ function endGame(){
     submitHighScoresBtn.textContent = "submit";
     endEl.append(label, highScoreInput, submitHighScoresBtn);
     submitHighScoresBtn.addEventListener("click", storeHighScore);
-    
+    // how to make this work with enter? have to look at the module
     
 };
 
 function storeHighScore (){
+    // high sore function
+    // adds name to highscore with input and localstorage
+    // asks to play again
+
     var initials = document.getElementById("initials").value;
     localStorage.setItem(initials, "to-do-json-stringify-timer");
 }
@@ -137,9 +141,6 @@ function storeHighScore (){
 // this will be a conditional OR 
 // need to understand how the timeout function works 
 
-// high sore function
-    // adds name to highscore with input and localstorage
-    // asks to play again
 
 startQuizEl.addEventListener("click", startQuiz);
 
