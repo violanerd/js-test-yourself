@@ -29,3 +29,8 @@ div #startQuiz {
     display: flex;
     justify-content: center;
   }
+.validation {
+  text-align: center;
+  font-style: italic;
+  font-weight: 100;
+}

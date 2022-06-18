@@ -84,13 +84,34 @@ var validate = function(event) {
     var element = event.target
     if (element.textContent===question1.correct){
         correctEl.textContent = "Correct!";
+        correctEl.setAttribute("style", "border-top: 2px dotted black");
+        setTimeout(function(){
+            correctEl.textContent="",
+            correctEl.removeAttribute("style", "border-top: 2px dotted black")}, 2000);
     } else if (element.textContent!=question1.correct) {
-        incorrectEl.textContent = "Nope!";
+        incorrectEl.textContent = "Incorrect!";
+        incorrectEl.setAttribute("style", "border-top: 2px dotted black");
+        setTimeout(function(){
+            incorrectEl.textContent="",
+            incorrectEl.removeAttribute("style", "border-top: 2px dotted black")}, 2000);
     }
     answerContainerEl.textContent="";
-    questionNum++;
-    generateQuestions();
+    
+    if (questionNum===4){
+        endGame();
+    } else {
+        questionNum++;
+        generateQuestions();
+    }
 };
+
+function resetValidate () {
+
+}
+
+function endGame(){
+    console.log("this is the end");
+}
 
 
 // function to end the game when the timer hits zero **  OR all questions are answered 
