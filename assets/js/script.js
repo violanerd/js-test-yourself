@@ -135,6 +135,7 @@ function storeHighScore (){
 
     var initials = document.getElementById("initials").value;
     localStorage.setItem(initials, "to-do-json-stringify-timer");
+    location.assign("./highscores.html");
 }
 
 // function to end the game when the timer hits zero **  OR all questions are answered 
