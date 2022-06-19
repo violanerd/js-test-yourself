@@ -37,4 +37,11 @@ div #startQuiz {
 
 button {
   background-color: lightskyblue;
+  padding: 5px;
+  margin: 5px;
+}
+
+#endscreen {
+  display: flex;
+  justify-content: center;
 }

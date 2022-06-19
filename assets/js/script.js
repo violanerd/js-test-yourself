@@ -135,8 +135,13 @@ function storeHighScore (){
 
     var initials = document.getElementById("initials").value;
     localStorage.setItem(initials, "to-do-json-stringify-timer");
-    location.assign("./highscores.html");
+    location.assign("./highscores.html"); //takes to highscore page
 }
+
+// function to listen on load of highscore
+//--display highscores from local storage
+//-- create two buttons to go back to the quiz or clear highscores
+
 
 // function to end the game when the timer hits zero **  OR all questions are answered 
 // this will be a conditional OR 
