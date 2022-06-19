@@ -82,6 +82,8 @@ function gameTimer () {
         }
         else{
             answerContainerEl.textContent="";
+            highscore="Better luck next time!"
+            clearInterval(timer);
             endGame();
         }
     }, 1000);
@@ -120,6 +122,9 @@ var validate = function(event) {
     answerContainerEl.textContent="";
     
     if (questionNum===4 && timeRemaining>1){
+        highscore=timeRemaining;
+        timeRemaining=0;
+        clearInterval(timer);
         endGame();
     } else {
         questionNum++;
@@ -128,15 +133,13 @@ var validate = function(event) {
 };
 
 function endGame(){
-    clearInterval(timer);
     questionEl.removeEventListener("click", validate);
-    highscore=timeRemaining;
     timerEL.textContent = "";
     
     // set the heading
     announcement.textContent="All Done!";
     // set the content text
-    question.textContent="Your final score is " + timeRemaining;
+    question.textContent="Your final score is " + highscore;
     // dynamically generate an input form for initials
     var highScoreInput = document.createElement("input"); 
     highScoreInput.setAttribute("type", 'text');
