@@ -32,6 +32,9 @@ var questionArray =[question1, question2, question3, question4, question5];
 // to start the quiz
 var startQuizEl = document.querySelector("#start-wrapper");
 
+// timer location
+var timerEL = document.querySelector("#timer");
+
 // start screen content to erase it
 var welcomePEl = document.querySelector("#start-screen-content");
 
@@ -57,14 +60,32 @@ var endEl = document.querySelector("#endscreen");
 // variable to use for iterating through questions
 var questionNum = 0;
 
+// variable to countdown to the end of the game
+var timeRemaining = 15;
+
+var highscore = 0;
+
 var startQuiz = function () {
     startQuizEl.textContent=("");
     welcomePEl.textContent=(""); 
-
+    gameTimer();
     generateQuestions();
     
     //add code to display a timer
 };
+
+function gameTimer () {
+    var timer = setInterval(function () {
+        if (timeRemaining > 0){
+            timerEL.textContent = timeRemaining;
+            timeRemaining--;
+        }
+        else{
+            answerContainerEl.textContent="";
+            endGame();
+        }
+    }, 1000);
+}
 
 function generateQuestions () {
     //code to generate question/answers
@@ -98,8 +119,7 @@ var validate = function(event) {
     }
     answerContainerEl.textContent="";
     
-    if (questionNum===4){
-        questionEl.removeEventListener("click", validate);
+    if (questionNum===4 && timeRemaining>1){
         endGame();
     } else {
         questionNum++;
@@ -108,11 +128,15 @@ var validate = function(event) {
 };
 
 function endGame(){
+    clearInterval(timer);
+    questionEl.removeEventListener("click", validate);
+    highscore=timeRemaining;
+    timerEL.textContent = "";
     
     // set the heading
     announcement.textContent="All Done!";
     // set the content text
-    question.textContent="Your final score is <enter timer number here>";
+    question.textContent="Your final score is " + timeRemaining;
     // dynamically generate an input form for initials
     var highScoreInput = document.createElement("input"); 
     highScoreInput.setAttribute("type", 'text');
