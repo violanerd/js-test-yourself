@@ -1,16 +1,20 @@
+// function to generate listed items
 function loadScores (){
+    // get items from local storage
     var savedHighScores = localStorage.getItem("scores");
     savedHighScores = JSON.parse(savedHighScores);
-    console.log(savedHighScores);
+
+    // display items to page
     var scoresEl = document.querySelector("#highscore-display");
-    
     for (var i = 0; i < savedHighScores.length; i++){
         var scores = document.createElement("div");
         var initals = savedHighScores[i][0];
         var highScore = savedHighScores[i][1];
         scores.textContent= (i+1)+ ". " + initals + " - "+ highScore; 
         scoresEl.appendChild(scores);
-   }
+    }
+
+    // buttons to clear high scores and go back and try again
     var endEl = document.querySelector("#option-container");
     var deleteEl = document.createElement("button");
     deleteEl.textContent="Clear High Scores";
