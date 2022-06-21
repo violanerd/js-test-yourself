@@ -167,15 +167,17 @@ function endGame(){
     }   
 };
 
+var highScoreSaver = []
 function storeHighScore (){
     // high sore function
     // adds name to highscore with input and localstorage
     // asks to play again
-
     var initials = document.getElementById("initials").value;
-    localStorage.setItem(initials, "to-do-json-stringify-timer");
+    highScoreSaver.push(initials,highscore);
+    localStorage.setItem("scores", JSON.stringify(highScoreSaver));
     location.assign("./highscores.html"); //takes to highscore page
 }
+
 
 // function to listen on load of highscore
 //--display highscores from local storage
