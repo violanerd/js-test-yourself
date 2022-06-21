@@ -76,18 +76,16 @@ var startQuiz = function () {
 
 function gameTimer () {
     var timer = setInterval(function () {
+        // continue
         if (timeRemaining > 1){
             timerEL.textContent = timeRemaining;
             timeRemaining--;
-        }
-        else{
-            answerContainerEl.textContent="";
-            highscore="Better luck next time!"
+        }else {
             clearInterval(timer);
             endGame();
         }
     }, 1000);
-}
+};
 
 function generateQuestions () {
     //code to generate question/answers
@@ -112,47 +110,61 @@ var validate = function(event) {
             correctEl.textContent="",
             correctEl.removeAttribute("style", "border-top: 2px dotted black")}, 1000);
     } 
-    if (element.textContent!=questionArray[questionNum].correct) {
+    else if (element.textContent!=questionArray[questionNum].correct) {
         incorrectEl.textContent = "Incorrect!";
         incorrectEl.setAttribute("style", "border-top: 2px dotted black");
-        timeRemaining = timeRemaining - 5;
+        timeRemaining = timeRemaining - 3;
         setTimeout(function(){
             incorrectEl.textContent="",
             incorrectEl.removeAttribute("style", "border-top: 2px dotted black")}, 1000);
-    }
+        }
+    
     answerContainerEl.textContent="";
+    questionNum++;
     
-    if (questionNum===4 && timeRemaining>1){
-        highscore=timeRemaining;
-        clearInterval(timer);
-        endGame();
-    } else {
-        questionNum++;
-        generateQuestions();
-    }
-};
+    if (questionNum === 5){
 
+        highscore = timeRemaining;
+        timeRemaining =0;
+    } else {
+        generateQuestions(); 
+    }
+}
 function endGame(){
-    questionEl.removeEventListener("click", validate);
     timerEL.textContent = "";
-    
-    // set the heading
-    announcement.textContent="All Done!";
-    // set the content text
-    question.textContent="Your final score is " + highscore;
-    // dynamically generate an input form for initials
-    var highScoreInput = document.createElement("input"); 
-    highScoreInput.setAttribute("type", 'text');
-    highScoreInput.setAttribute("id", "initials");
-    var label = document.createElement("label");
-    label.setAttribute("for", "initials");
-    label.textContent = "Enter Initials: ";
-    var submitHighScoresBtn = document.createElement("button");
-    submitHighScoresBtn.textContent = "submit";
-    endEl.append(label, highScoreInput, submitHighScoresBtn);
-    submitHighScoresBtn.addEventListener("click", storeHighScore);
-    // how to make this work with enter? have to look at the module
-    
+    questionEl.removeEventListener("click", validate);
+    answerContainerEl.textContent="";
+    if (highscore===0){
+        announcement.textContent="You ran out of time!";
+        question.textContent="Better luck next time!";
+
+        var gobackEl = document.createElement("button");
+        gobackEl.textContent="Go Back and Try Again";
+        gobackEl.setAttribute("style", "border: 3px solid black; background-color: #BEBEBE;");
+        endEl.appendChild(gobackEl);
+        endEl.addEventListener("click", function (){
+            location.assign("./index.html");
+        });
+    } else {
+        announcement.textContent="All Done!";
+        question.textContent="Your final score is " + highscore;
+        // dynamically generate an input form for initials
+        
+        var highScoreInput = document.createElement("input"); 
+        highScoreInput.setAttribute("type", 'text');
+        highScoreInput.setAttribute("id", "initials");
+        
+        var label = document.createElement("label");
+        label.setAttribute("for", "initials");
+        label.textContent = "Enter Initials: ";
+        
+        var submitHighScoresBtn = document.createElement("button");
+        submitHighScoresBtn.textContent = "submit";
+        endEl.append(label, highScoreInput, submitHighScoresBtn);
+        
+        submitHighScoresBtn.addEventListener("click", storeHighScore);
+        // how to make this work with enter? have to look at the module
+    }   
 };
 
 function storeHighScore (){
