@@ -167,14 +167,23 @@ function endGame(){
     }   
 };
 
-var highScoreSaver = []
+
+var allHighScores = []
 function storeHighScore (){
     // high sore function
     // adds name to highscore with input and localstorage
     // asks to play again
+    var oldHighScores = localStorage.getItem("scores");
+    if (oldHighScores){
+        oldHighScores = JSON.parse(oldHighScores);
+        for (var i = 0; i <oldHighScores.length; i++){
+            allHighScores.push(oldHighScores[i]);
+        }
+    }
     var initials = document.getElementById("initials").value;
-    highScoreSaver.push(initials,highscore);
-    localStorage.setItem("scores", JSON.stringify(highScoreSaver));
+    var currentScore = [initials, highscore]
+    allHighScores.push(currentScore);
+    localStorage.setItem("scores", JSON.stringify(allHighScores));
     location.assign("./highscores.html"); //takes to highscore page
 }
 
