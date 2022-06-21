@@ -17,9 +17,9 @@ var question3 = {
 };
 
 var question4 = {
-    question: "Given this array --> var cheese =['cheddar', 'gouda', 'parmesan', 'feta']', --> What statement will return 'cheddar'?",
-    answers: ["a. console.log('cheese');", "b. console.log(cheese[3]);", "c. console.log(cheese[0]);", "d. console.log('cheddar')", "e. c and d"],
-    correct: "e. c and d"
+    question: "Which of the following is true about typeof?",
+    answers: ["a. tells you the data type of the operand", "b. returns a string", "c. evaluates typeof '43' to string", "d. all of the above", "e. none of the above"],
+    correct: "d. all of the above"
 };
 var question5 = {
     question: "What value does window.confirm() return?",
@@ -76,7 +76,7 @@ var startQuiz = function () {
 
 function gameTimer () {
     var timer = setInterval(function () {
-        if (timeRemaining > 0){
+        if (timeRemaining > 1){
             timerEL.textContent = timeRemaining;
             timeRemaining--;
         }
@@ -110,20 +110,20 @@ var validate = function(event) {
         correctEl.setAttribute("style", "border-top: 2px dotted black");
         setTimeout(function(){
             correctEl.textContent="",
-            correctEl.removeAttribute("style", "border-top: 2px dotted black")}, 2000);
+            correctEl.removeAttribute("style", "border-top: 2px dotted black")}, 1000);
     } 
     if (element.textContent!=questionArray[questionNum].correct) {
         incorrectEl.textContent = "Incorrect!";
         incorrectEl.setAttribute("style", "border-top: 2px dotted black");
+        timeRemaining = timeRemaining - 5;
         setTimeout(function(){
             incorrectEl.textContent="",
-            incorrectEl.removeAttribute("style", "border-top: 2px dotted black")}, 2000);
+            incorrectEl.removeAttribute("style", "border-top: 2px dotted black")}, 1000);
     }
     answerContainerEl.textContent="";
     
     if (questionNum===4 && timeRemaining>1){
         highscore=timeRemaining;
-        timeRemaining=0;
         clearInterval(timer);
         endGame();
     } else {

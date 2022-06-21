@@ -1,4 +1,4 @@
-Correct answers {1: e; 2: b; 3: d; 4: e; 5: c}
+Correct answers {1: e; 2: b; 3: d; 4: d; 5: c}
 
 
 
@@ -23,15 +23,12 @@ Correct answers {1: e; 2: b; 3: d; 4: e; 5: c}
     d. ===
     e. none of the above
 
-4. Given this array -
-    var cheese =["cheddar", "gouda", "parmesan", "feta"]
-    
-    What statement will return "cheddar"?
-    a. console.log('cheese');
-    b. console.log(cheese[3]);
-    c. console.log(cheese[0]);
-    d. console.log('cheddar')
-    e. c and d
+4. Which of the following is true about typeof?
+    a. tells you the data type of the operand
+    b. returns a string
+    c. evaluates typeof '43' to string
+    d. all of the above
+    e. none of the above
 
 5. What does window.confirm('Are you sure?') return?
     a. yes or no

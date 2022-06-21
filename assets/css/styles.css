@@ -2,6 +2,14 @@
     box-sizing: border-box;
   }
   /* Universal Box Sizing: https://css-tricks.com/box-sizing/#:~:text=With%20box%2Dsizing%3A%20border%2D,its%20way%20into%20reset%20styles. */
+body {
+  font-family: 'Courier New', Courier, monospace;
+}
+
+h1#highscores {
+  text-align: center;
+}
+
 #announcer-wrapper{
   display: flex;
   justify-content: center;
@@ -32,9 +40,13 @@ div #startQuiz {
 .validation {
   text-align: center;
   font-style: italic;
-  font-weight: 100;
+  font-weight: bold;
+  background-color: aquamarine;
 }
 
+h3#incorrect {
+  background-color: #d69ca2;
+}
 button {
   background-color: lightskyblue;
   padding: 5px;
