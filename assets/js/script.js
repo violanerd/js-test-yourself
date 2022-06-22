@@ -61,24 +61,24 @@ var endEl = document.querySelector("#endscreen");
 var questionNum = 0;
 
 // variable to countdown to the end of the game
-var timeRemaining = 15;
+var timeRemaining = 50;
 
 var highscore = 0;
 
+
+// starts the game, resets the html, starts the timer
 var startQuiz = function () {
     startQuizEl.textContent=("");
     welcomePEl.textContent=(""); 
     gameTimer();
     generateQuestions();
-    
-    //add code to display a timer
 };
 
 function gameTimer () {
     var timer = setInterval(function () {
-        // continue
-        if (timeRemaining > 1){
-            timerEL.textContent = timeRemaining;
+        // display time if time remaining
+        if (timeRemaining > 0){
+            timerEL.textContent = "Time: " + timeRemaining;
             timeRemaining--;
         }else {
             clearInterval(timer);
@@ -114,6 +114,7 @@ var validate = function(event) {
         incorrectEl.textContent = "Incorrect!";
         incorrectEl.setAttribute("style", "border-top: 2px dotted black");
         timeRemaining = timeRemaining - 3;
+        console.log(timeRemaining);
         setTimeout(function(){
             incorrectEl.textContent="",
             incorrectEl.removeAttribute("style", "border-top: 2px dotted black")}, 1000);
@@ -121,9 +122,8 @@ var validate = function(event) {
     
     answerContainerEl.textContent="";
     questionNum++;
-    
+    // set to trigger game end, setting timeRemaining to 0 ends the timer and calls endGame 
     if (questionNum === 5){
-
         highscore = timeRemaining;
         timeRemaining =0;
     } else {
@@ -132,12 +132,13 @@ var validate = function(event) {
 }
 function endGame(){
     timerEL.textContent = "";
+    document.querySelector("#highScores").textContent="";
     questionEl.removeEventListener("click", validate);
     answerContainerEl.textContent="";
-    if (highscore===0){
+    if (highscore<=0){
         announcement.textContent="You ran out of time!";
         question.textContent="Better luck next time!";
-
+//create the go back and try again button
         var gobackEl = document.createElement("button");
         gobackEl.textContent="Go Back and Try Again";
         gobackEl.setAttribute("style", "border: 3px solid black; background-color: #BEBEBE;");
@@ -163,16 +164,13 @@ function endGame(){
         endEl.append(label, highScoreInput, submitHighScoresBtn);
         
         submitHighScoresBtn.addEventListener("click", storeHighScore);
-        // how to make this work with enter? have to look at the module
     }   
 };
 
 
 var allHighScores = []
 function storeHighScore (){
-    // high sore function
-    // adds name to highscore with input and localstorage
-    // asks to play again
+//check if scores in local storage, add them to array
     var oldHighScores = localStorage.getItem("scores");
     if (oldHighScores){
         oldHighScores = JSON.parse(oldHighScores);
@@ -180,23 +178,13 @@ function storeHighScore (){
             allHighScores.push(oldHighScores[i]);
         }
     }
+// add current highscore to array, redirect to highscore html
     var initials = document.getElementById("initials").value;
     var currentScore = [initials, highscore]
     allHighScores.push(currentScore);
     localStorage.setItem("scores", JSON.stringify(allHighScores));
     location.assign("./highscores.html"); //takes to highscore page
 }
-
-
-// function to listen on load of highscore
-//--display highscores from local storage
-//-- create two buttons to go back to the quiz or clear highscores
-
-
-// function to end the game when the timer hits zero **  OR all questions are answered 
-// this will be a conditional OR 
-// need to understand how the timeout function works 
-
 
 startQuizEl.addEventListener("click", startQuiz);
 
