@@ -19,10 +19,10 @@ Challenges:
  
 
 ## Website
-Visit the [project]()
+Visit the [project](https://violanerd.github.io/js-test-yourself/)
 
-<a href="">
-<img src="" alt="Javascript Quiz">
+<a href="https://violanerd.github.io/js-test-yourself/">
+<img src="./assets/images/screenimage.png" alt="Javascript Quiz">
 </a>
 
 ## Contribution
