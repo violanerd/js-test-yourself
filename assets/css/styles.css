@@ -37,12 +37,15 @@ div #answer-wrapper{
   flex-direction: column;
 }
 div #startQuiz {
-    border: 3px solid black;
-    background-color: rgb(106, 191, 191);
+    border: 2px solid grey;
+    background-color: rgb(62, 142, 142);
+    font-weight: bold;
+    font-size: 22px;
 }
 
 div #startQuiz:hover {
-  background-color: lightskyblue;
+  background-color: rgb(106, 191, 191);
+  border-style: outset;
 }
 
 #startQuiz {
@@ -54,20 +57,23 @@ div #startQuiz:hover {
   text-align: center;
   font-style: italic;
   font-weight: bold;
-  background-color: lightskyblue;
+  background-color: rgb(118, 186, 137);
 }
 
 h3#incorrect {
   background-color: #d69ca2;
 }
+
 button {
-  background-color: rgb(106, 191, 191);
+  border: 2px solid grey;
+  background-color: rgb(62, 142, 142);
   padding: 5px;
   margin: 5px;
+  font-size: 18px;
 }
 button:hover {
-  background-color: lightskyblue;
-  border-color: grey;
+  background-color: rgb(106, 191, 191);
+  border-style: outset;
 }
 
 #endscreen {

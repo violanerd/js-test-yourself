@@ -141,7 +141,6 @@ function endGame(){
 //create the go back and try again button
         var gobackEl = document.createElement("button");
         gobackEl.textContent="Go Back and Try Again";
-        gobackEl.setAttribute("style", "border: 3px solid black; background-color: #BEBEBE;");
         endEl.appendChild(gobackEl);
         endEl.addEventListener("click", function (){
             location.assign("./index.html");
